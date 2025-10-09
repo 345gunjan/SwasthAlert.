@@ -1,6 +1,6 @@
 @media(max-width:900px) {
     body {
-        background-color: rgb(194, 245, 228);
+        background-color: rgb(96, 161, 140);
     }
 
     .sidebar {
@@ -39,5 +39,6 @@
         
         grid-template-rows: 80px auto 80px;
     }
+
 
 }
