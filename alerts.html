@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alert Messages</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background: linear-gradient(135deg, #625699, #81C784);
+  }
+
+  /* Alert container */
+  .alert {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  /* Close button */
+  .alert .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  /* Alert types */
+  .alert-success {
+    background: linear-gradient(135deg, #549459, #c2804a);
+  }
+
+  .alert-info {
+    background: linear-gradient(135deg, #f06ab8, #6b4fac);
+  }
+
+  .alert-warning {
+    background: linear-gradient(135deg, #e3ee4f, #e6518a);
+  }
+
+  .alert-error {
+    background: linear-gradient(135deg, #64b9db, #64ad39);
+  }
+
+  /* Optional: fade out animation */
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; height: 0; padding: 0; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="alert alert-success">
+    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Vaccination scheduled successfully!
+  </div>
+
+  <div class="alert alert-info">
+    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Your next vaccine is due in 3 days.
+  </div>
+
+  <div class="alert alert-warning">
+    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Please update your child’s vaccination records.
+  </div>
+
+  <div class="alert alert-error">
+    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Failed to schedule the appointment. Try again!
+  </div>
+
+</body>
+</html>

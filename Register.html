@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccine Registration with OTP</title>
+  <style>
+    * { 
+        margin: 0; 
+        padding: 0;
+         box-sizing: border-box; 
+         font-family: Arial, sans-serif;
+    }
+    body { 
+    background: linear-gradient(135deg, #f79ee1, #addfe7);
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+}
+    .register-container {
+      background: white; 
+      padding: 40px 30px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%; 
+      max-width: 450px;
+    }
+    .register-container h2 { 
+        text-align: center; 
+        margin-bottom: 25px; 
+        color: #2563eb; 
+    }
+    form { 
+        display: flex;
+         flex-direction: column;
+          gap: 15px;
+    }
+    input, select { 
+        padding: 12px;
+         border: 1px solid #ccc;
+          border-radius: 8px; 
+          font-size: 16px; 
+          width: 100%; 
+        }
+    button {
+        padding: 12px; 
+        border: none; 
+        border-radius: 8px; 
+        background: linear-gradient(135deg, #10b981, #06b6d4); 
+        color: white;
+        font-size: 16px; 
+        cursor: pointer; 
+        transition: 0.3s; 
+    }
+    button:hover { 
+        background: linear-gradient(135deg, #06b6d4, #10b981); 
+    }
+    .login-link { 
+        text-align: center; 
+        font-size: 14px; 
+        margin-top: 10px; 
+    }
+    .login-link a { 
+        color: #2563eb;
+         text-decoration: none; 
+        }
+    .login-link a:hover { 
+        text-decoration: underline; 
+    }
+    .otp-section { display: none;
+        flex-direction: column; 
+        gap: 15px; 
+        margin-top: 20px; 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-container">
+    <h2>Vaccine Registration</h2>
+    
+    <form id="registerForm">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="date" name="dob" placeholder="Date of Birth" required>
+
+      <label for="vaccine">Adult Vaccine:</label>
+      <select name="vaccine" id="vaccine">
+        <option value="">Select Vaccine</option>
+        <option value="covid19">COVID-19</option>
+        <option value="influenza">Influenza</option>
+        <option value="hepatitis">Hepatitis B</option>
+      </select>
+
+      <label for="child-vaccine">Children Vaccine (if applicable):</label>
+      <select name="child-vaccine" id="child-vaccine">
+        <option value="">Select Vaccine</option>
+        <option value="polio">Polio</option>
+        <option value="mmr">MMR</option>
+        <option value="dtp">DTP</option>
+        <option value="hepatitis-b">Hepatitis B</option>
+      </select>
+
+      <button type="submit">Register</button>
+
+      <!-- OTP Section -->
+      <div class="otp-section" id="otpSection">
+        <input type="text" id="otpInput" placeholder="Enter OTP" required>
+        <button type="button" id="verifyOtpBtn">Verify OTP</button>
+      </div>
+    </form>
+
+    <div class="login-link">
+      Already registered? <a href="login.html">Login here</a>
+    </div>
+  </div>
+</body>
+</html>
