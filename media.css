@@ -1,6 +1,6 @@
 @media(max-width:900px) {
     body {
-        background-color: rgb(96, 161, 140);
+        background-color: rgb(194, 245, 228);
     }
 
     .sidebar {
@@ -23,7 +23,7 @@
 
 @media(max-width:500px) {
     body {
-        background-color: rgb(56, 255, 189);
+        background-color: rgb(96, 161, 140);
     }
 
     .page p {
@@ -42,3 +42,4 @@
 
 
 }
+
