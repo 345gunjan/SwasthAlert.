@@ -4,130 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tika Notifications</title>
-      <style>
-        @import url('style1.css');
-        @import url('Style.css');
-        @import url('media.css');
-        @import url('print.css');
-    </style>
+  <style>
+    @import url('style1.css');
+    @import url('Style.css');
+    @import url('media.css');
+    @import url('print.css');
+  </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <header>
     <h1>SwasthAlert.</h1>
-    <button onclick="alert('Login button clicked!')">Login</button>
+    <button onclick="window.location.href='Login.html'">Login</button>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Stay Notified, Stay Updated</h2>
-    <p>Tika brings all your important alerts in one place.</p>
-  </section>
+  <!-- Hero Section -->
+ <div class="slider">
+  <div class="slides">
+    <img src="https://wallpapercave.com/wp/wp8044477.jpg" alt="Slide 1">
+    <img src="https://th.bing.com/th/id/OIP.c9eeEH0AkuYlNzxlQauu9AHaEK?w=316&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Slide 2">
+    <img src="https://cdn2.vectorstock.com/i/1000x1000/34/21/children-vaccination-and-immunization-concept-vector-27673421.jpg" alt="Slide 3">
+  </div>
+</div>
+
 
   <!-- Main Content -->
-  <div class="container">
+  <main class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
       <h3>Categories</h3>
       <ul>
-        <li>All</li>
-        <li>Events</li>
-        <li>Messages</li>
-        <li>Alerts</li>
+        <li><a href="index.html">All</a></li>
+        <li><a href="Events.html">Events</a></li>
+        <li><a href="message.html">Messages</a></li>
+        <li><a href="alerts.html">Alerts</a></li>
       </ul>
     </aside>
 
     <!-- Notifications -->
-    <div class="notification-card">
-  <div class="card-icon">🔔</div>
-  <div class="card-content">
-    <h4>Notification 1</h4>
-    <img src="https://img.freepik.com/premium-vector/notification_2825-173.jpg?w=2000" alt="Notification Image">
-    <p>This is a sample notification message.</p>
-       </div>
-     </div>
+    <section class="notifications">
+      <div class="notification-card">
+        <div class="card-icon">🔔</div>
+        <div class="card-content">
+          <h4>Notification 1</h4>
+          <img src="https://img.freepik.com/premium-vector/notification_2825-173.jpg?w=2000" alt="Notification Image">
+          <p>This is a sample notification message.</p>
+        </div>
+      </div>
 
-       <div class="notification-card">
-  <div class="card-icon">🔔</div>
-  <div class="card-content">
-    <h4>Notification 2</h4>
-    <img src="https://th.bing.com/th/id/OIP.PfmKD4WpYNLnTFQxyv62ngHaH_?w=183&h=198&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Notification Image">
-    <p>This is a sample notification message.</p>
-       </div>
-     </div>
-
+      <div class="notification-card">
+        <div class="card-icon">🔔</div>
+        <div class="card-content">
+          <h4>Notification 2</h4>
+          <img src="https://th.bing.com/th/id/OIP.PfmKD4WpYNLnTFQxyv62ngHaH_?w=183&h=198&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Notification Image">
+          <p>This is a sample notification message.</p>
+        </div>
+      </div>
 
       <div class="notification-card">
         <div class="card-icon">⚡</div>
         <div class="card-content">
           <h4>Notification 3</h4>
-          <img src="data:image/webp;base64,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" alt="">
+          <!-- Replaced heavy base64 with a placeholder image -->
+          <img src="https://th.bing.com/th/id/OIP.5jZ0qyhDswtBERozOcV8gQHaEK?w=289&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="System Alert">
           <p>System alert: Check your settings for security updates.</p>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-  <div class="footer-container">
-    <!-- Get to Know Us -->
-    <div class="footer-section">
-      <h4>Get to Know Us</h4>
-      <ul>
-        <li><a href="#">About Tika</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Press Releases</a></li>
-        <li><a href="#">Tika Science</a></li>
-      </ul>
+    <div class="footer-container">
+      <!-- Get to Know Us -->
+      <div class="footer-section">
+        <h4>Get to Know Us</h4>
+        <ul>
+          <li><a href="#">About Tika</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Releases</a></li>
+          <li><a href="#">Tika Science</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect with Us -->
+      <div class="footer-section">
+        <h4>Connect with Us</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+
+      <!-- Make Money with Us -->
+      <div class="footer-section">
+        <h4>Make Money with Us</h4>
+        <ul>
+          <li><a href="#">Sell on Tika</a></li>
+          <li><a href="#">Protect Your Brand</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+          <li><a href="#">Advertise Your Products</a></li>
+        </ul>
+      </div>
+
+      <!-- Let Us Help You -->
+      <div class="footer-section">
+        <h4>Let Us Help You</h4>
+        <ul>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Returns & Orders</a></li>
+          <li><a href="#">Safety Alerts</a></li>
+          <li><a href="#">Help & Support</a></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Connect with Us -->
-    <div class="footer-section">
-      <h4>Connect with Us</h4>
-      <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Instagram</a></li>
-      </ul>
+    <!-- Bottom Footer -->
+    <div class="footer-bottom">
+      <p>Tika Notification. All Rights Reserved.</p>
+      <p>
+        <a href="#">Terms of Use</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Interest-Based Ads</a>
+      </p>
     </div>
-
-    <!-- Make Money with Us -->
-    <div class="footer-section">
-      <h4>Make Money with Us</h4>
-      <ul>
-        <li><a href="#">Sell on Tika</a></li>
-        <li><a href="#">Protect Your Brand</a></li>
-        <li><a href="#">Affiliate Program</a></li>
-        <li><a href="#">Advertise Your Products</a></li>
-      </ul>
-    </div>
-
-    <!-- Let Us Help You -->
-    <div class="footer-section">
-      <h4>Let Us Help You</h4>
-      <ul>
-        <li><a href="#">Your Account</a></li>
-        <li><a href="#">Returns & Orders</a></li>
-        <li><a href="#">Safety Alerts</a></li>
-        <li><a href="#">Help & Support</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Bottom Footer -->
-  <div class="footer-bottom">
-    <p>Tika Notification. All Rights Reserved.</p>
-    <p>
-      <a href="#">Terms of Use</a> |
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Interest-Based Ads</a>
-    </p>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
-
-
