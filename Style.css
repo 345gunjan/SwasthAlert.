@@ -27,8 +27,6 @@ header {
 header h1 {
   color: white;
   font-size: 24px;
-  
-
 }
 
 header button {
@@ -45,7 +43,6 @@ header button {
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background-image: url("https://wallpapercave.com/wp/wp8044477.jpg"); /* HD image */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -53,7 +50,7 @@ header button {
   position: relative;
 }
 
-/* Optional: Dark overlay to make text readable */
+/* Dark overlay */
 .hero::before {
   content: "";
   position: absolute;
@@ -68,9 +65,8 @@ header button {
 .hero p {
   position: relative;
   z-index: 1;
-  font-size: 40px;
   margin-bottom: 15px;
-   font-size: 18px;
+  font-size: 18px; /* unified size */
 }
 
 /* Layout */
@@ -106,52 +102,95 @@ header button {
   transition: 0.3s;
 }
 
-.sidebar li:hover {
+.sidebar li a {
+  text-decoration: none; 
+  color: inherit;        
+  display: block;        
+  padding: 5px 10px;
+}
+
+.sidebar li a:hover {
   color: #2563eb;
   font-weight: bold;
 }
 
+
 /* Notifications */
-.notification-card {
-  display: flex;
-  gap: 8px;                  /* smaller gap */
-  align-items: flex-start;
-  background: #f9f9f9;
-  padding: 8px;               /* smaller padding */
-  border-radius: 6px;         /* slightly smaller radius */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  margin-bottom: 10px;        /* smaller margin */
-  max-width: 300px;           /* compact width */
+/* Notifications Section */
+.notifications {
+  display: flex;              /* flex layout */
+  flex-wrap: wrap;            /* wrap on smaller screens */
+  gap: 20px;                  /* space between cards */
+  padding: 20px;
+  justify-content: center;    /* center cards horizontally */
 }
 
+/* Individual notification card */
+.notification-card {
+  display: flex;
+  flex-direction: column;     /* vertical layout inside card */
+  align-items: center;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 250px;               /* fixed width for consistency */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.notification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Card icon */
 .card-icon {
-  width: 30px;                /* smaller icon */
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: #2563eb;
   color: #fff;
-  border-radius: 50%;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;            /* smaller font */
-  flex-shrink: 0;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
+/* Card content */
+.card-content h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+}
 
 .card-content img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  border-radius: 4px;
-  margin: 3px 0;
+  border-radius: 6px;
+  margin-bottom: 8px;
 }
 
 .card-content p {
-  margin: 0;
-  font-size: 12px;            /* smaller text */
+  font-size: 14px;
   color: #555;
+  text-align: center;
   font-style: italic;
-  font: bold;
 }
+
+/* Responsive for small screens */
+@media (max-width: 800px) {
+  .notifications {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .notification-card {
+    width: 90%; /* almost full width on mobile */
+  }
+}
+
 
 /* Footer */
 .footer {
@@ -208,3 +247,35 @@ header button {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
+/* Full-page slider container */
+.slider {
+  width: 100%;             /* full viewport width */
+  height: 300px;            /* full viewport height */
+  overflow: hidden;
+}
+
+/* Slides wrapper */
+.slides {
+  width: 300%;              /* 3 images */
+  height: 300px;
+  position: relative;
+  animation: slideAnimation 10s infinite alternate ease-in-out; /* slower animation */
+}
+
+/* Individual images */
+.slides img {
+  width: 33.33%;
+  height: 300px;
+  float: left;
+}
+
+/* Keyframes for sliding */
+@keyframes slideAnimation {
+  0% {left:0% }
+  30% {left:0% }
+  40% {left: -100% }
+  66% {left: -100% }
+  73% {left: -200%}
+  100% {left: -200%}
+}
+
