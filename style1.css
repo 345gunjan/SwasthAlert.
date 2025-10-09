@@ -1,73 +1,104 @@
-body
-{
-    margin:0 auto;
-    padding:0;
+/* Reset */
+body {
+    margin: 0;
+    padding: 0;
 }
 
-:root
-{
-    --bg:red;
-    --bg1:green;
-    --bg2:orange;
-    --bg3:blue;
+/* CSS Variables */
+:root {
+    --bg: red;
+    --bg1: green;
+    --bg2: orange;
+    --bg3: blue;
 }
-.webpage
-{
-    width:1200px;
-    height: auto;
+
+/* Main webpage grid layout */
+.webpage {
+    width: 1200px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns:200px 1000px;
+    grid-template-columns: 200px 1fr; /* 1fr instead of 1000px for flexibility */
     grid-template-rows: 80px 600px 80px auto;
-    margin:0 auto;
-    padding:0;
+    gap: 10px; /* optional spacing between grid items */
+    box-sizing: border-box;
 }
-.webpage section
-{
-    /* border:1px solid red; */
-    padding:10px;
-    margin:10px;
+
+.webpage section {
+    padding: 10px;
+    margin: 0; /* avoid double spacing with grid gap */
 }
-.webpage section:nth-child(1),.webpage section:nth-child(4)
-{
-    grid-column-start: 1;
-    grid-column-end: 3;
+
+.webpage section:nth-child(1),
+.webpage section:nth-child(4) {
+    grid-column: 1 / 3; /* shorthand for start-end */
 }
-.page
-{
+
+/* Page inner content */
+.page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color:greenyellow;
+    background-color: greenyellow;
+    padding: 10px;
+    box-sizing: border-box;
 }
-.page div
-{
-    /* border:1px solid blue; */
-    padding:10px;
+
+.page div {
+    padding: 10px;
 }
-.page div:last-child
-{
+
+.page div:last-child {
     display: flex;
 }
-.page div:last-child header
-{
-    flex:1;
-    /* border:1px solid red; */
-    padding:10px;
+
+.page div:last-child header {
+    flex: 1;
+    padding: 10px;
 }
-.page img
-{
+
+.page img {
     width: 100%;
-   
+    height: auto; /* ensure image scales correctly */
 }
-.page p
-{
+
+.page p {
     font-size: 20px;
     column-count: 4;
     text-align: justify;
+    column-gap: 20px; /* optional spacing between columns */
 }
+
+/* Notification cards */
+.notification-container {
+    display: block; /* default stacked for mobile */
+    margin: 10px 0;
+}
+
+.notification-card {
+    background-color: var(--bg2);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.notification-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.notification-card p {
+    font-size: 16px;
+    text-align: justify;
+}
+
+/* Responsive Styles */
+
+/* Small screens (phones) */
 @media only screen and (max-width: 599px) {
     body {
-        background-color: #e0f7fa; /* Light blue */
+        background-color: #e0f7fa;
     }
 
     header, footer {
@@ -75,39 +106,32 @@ body
         padding: 10px;
     }
 
-    .container {
+    .webpage {
         width: 100%;
-    }
-}
-
-/* Tablets (600px - 1023px) */
-@media only screen and (min-width: 600px) and (max-width: 1023px) {
-    body {
-        background-color: #fff3e0; /* Light orange */
+        grid-template-columns: 1fr; /* single column on small screens */
+        grid-template-rows: auto;
     }
 
-    header, footer {
+    .page p {
+        column-count: 1; /* single column text for mobile */
         font-size: 16px;
-        padding: 12px;
     }
 
-    .container {
-        width: 95%;
+    .notification-container {
+        display: block;
     }
 }
 
-/* Laptops/Desktops (1024px and above) */
+/* Laptop/Desktop screens */
 @media only screen and (min-width: 1024px) {
-    body {
-        background-color: #f5f5f5;
+    .notification-container {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
     }
 
-    header, footer {
-        font-size: 18px;
-        padding: 15px;
-    }
-
-    .container {
-        width: 80%;
+    .notification-card {
+        flex: 1;
+        margin-bottom: 0;
     }
 }
