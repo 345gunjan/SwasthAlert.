@@ -10,36 +10,6 @@ body {
   background: #f9fafc;
   color: #333;
 }
-
-/* Navbar */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: linear-gradient(135deg, #10b981, #3b82f6);
-}
-
-header h1 {
-  color: white;
-  font-size: 24px;
-}
-
-header button {
-  background: linear-gradient(135deg, #10b981, #06b6d4);
-  color: black;
-  font-size: 15px;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -69,54 +39,6 @@ header button {
   font-size: 18px; /* unified size */
 }
 
-/* Layout */
-.container {
-  display: flex;
-  gap: 20px;
-  padding: 30px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Sidebar */
-.sidebar {
-  flex: 1;
-  background: linear-gradient(135deg, #a7f3d0, #67e8f9); 
-  font-style: oblique;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.sidebar h3 {
-  margin-bottom: 15px;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar li {
-  padding: 8px 0;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.sidebar li a {
-  text-decoration: none; 
-  color: inherit;        
-  display: block;        
-  padding: 5px 10px;
-}
-
-.sidebar li a:hover {
-  color: #2563eb;
-  font-weight: bold;
-}
-
-
-/* Notifications */
-/* Notifications Section */
 .notifications {
   display: flex;              /* flex layout */
   flex-wrap: wrap;            /* wrap on smaller screens */
@@ -178,20 +100,6 @@ header button {
   text-align: center;
   font-style: italic;
 }
-
-/* Responsive for small screens */
-@media (max-width: 800px) {
-  .notifications {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .notification-card {
-    width: 90%; /* almost full width on mobile */
-  }
-}
-
-
 /* Footer */
 .footer {
   background: #232f3e;
