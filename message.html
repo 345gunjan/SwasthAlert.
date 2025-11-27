@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Chat Box</title>
+  <title>Vaccine Chat Box</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,6 +12,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
 
     .chat-container {
@@ -41,6 +42,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      background: #f8fafc;
     }
 
     .message {
@@ -92,7 +94,6 @@
       background: #1e40af;
     }
 
-    /* Scrollbar styling */
     .chat-messages::-webkit-scrollbar {
       width: 6px;
     }
@@ -105,12 +106,10 @@
 <body>
 
   <div class="chat-container">
-    <div class="chat-header">Chat with People</div>
+    <div class="chat-header">Vaccine Chat Bot 🤖</div>
     
     <div class="chat-messages" id="chatMessages">
-      <div class="message received">Hello! How are you?</div>
-      <div class="message sent">I'm good, thanks! How about you?</div>
-      <div class="message received">Doing well! Have you received your vaccine?</div>
+      <div class="message received">Hello! How can I help you with vaccines today?</div>
     </div>
 
     <div class="chat-input">
@@ -118,5 +117,60 @@
       <button onclick="sendMessage()">Send</button>
     </div>
   </div>
+ 
+  <script>
+    const chatMessages = document.getElementById("chatMessages");
+    const chatInput = document.getElementById("chatInput");
+
+    // Predefined AI-like replies for demonstration
+    const autoReplies = [
+      "Yes! Make sure to take your vaccine on time.",
+      "Remember to check your child's vaccination schedule.",
+      "You should consult your doctor if you have any doubts.",
+      "Great! Have you received all your doses?",
+      "Don't forget to maintain social distancing.",
+      "Vaccines are safe and effective!",
+      "How are you feeling today?"
+    ];
+
+    function getRandomReply() {
+      return autoReplies[Math.floor(Math.random() * autoReplies.length)];
+    }
+
+    function addMessage(text, type) {
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", type);
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const userMessage = chatInput.value.trim();
+      if (userMessage === "") return;
+
+      addMessage(userMessage, "sent");
+      chatInput.value = "";
+
+      // Typing indicator
+      const typingDiv = document.createElement("div");
+      typingDiv.classList.add("message", "received");
+      typingDiv.textContent = "Typing...";
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Simulate delay for AI reply
+      setTimeout(() => {
+        typingDiv.remove();
+        const reply = getRandomReply();
+        addMessage(reply, "received");
+      }, 1000); // 1 second delay
+    }
+
+    chatInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+
 </body>
 </html>

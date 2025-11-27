@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vaccine Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left panel */
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(to bottom, #4f46e5, #818cf8);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            min-width: 280px;
+        }
+
+        .profile-pic-wrapper {
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            background: #cbd5e1;
+            object-fit: cover;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic-wrapper:hover .profile-pic {
+            transform: scale(1.05);
+        }
+
+        .upload-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #fff;
+            color: #4f46e5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .full-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+        }
+
+        .username {
+            font-size: 16px;
+            color: #e0e7ff;
+        }
+
+        /* Right panel */
+        .right-panel {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px;
+        }
+
+        .profile-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4f46e5;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 5px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .info-row b {
+            color: #1e293b;
+        }
+
+        /* Vaccine cards */
+        .vaccine-card {
+            background: #eef2ff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .vaccine-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .vaccine-name {
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .status.completed { background: #22c55e; }
+        .status.pending { background: #facc15; }
+        .status.missed { background: #ef4444; }
+
+        .logout-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 25px;
+            background: #4f46e5;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #4338ca;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        @media(max-width: 900px){
+            .container { flex-direction: column; }
+            .left-panel, .right-panel { width: 100%; flex: unset; padding: 30px 20px; }
+            .right-panel { align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Left panel -->
+    <div class="left-panel">
+        <div class="profile-pic-wrapper">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic" id="profilePic">
+        </div>
+        <input type="file" id="uploadPhoto" accept="image/*">
+        <button class="upload-btn" id="uploadBtn">Upload Photo</button>
+
+        <div class="full-name" id="fullName">Loading...</div>
+        <div class="username" id="username">@username</div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="right-panel">
+        <div class="profile-card" id="profileData">
+            Loading profile...
+        </div>
+    </div>
+</div>
+
+<script>
+    const uploadBtn = document.getElementById("uploadBtn");
+    const uploadPhoto = document.getElementById("uploadPhoto");
+    const profilePic = document.getElementById("profilePic");
+
+    uploadBtn.addEventListener("click", () => {
+        uploadPhoto.click();
+    });
+
+    uploadPhoto.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profilePic.src = e.target.result; // Preview
+            }
+            reader.readAsDataURL(file);
+
+            // Optional: send to server
+            // const formData = new FormData();
+            // formData.append("profilePic", file);
+            // fetch("/uploadProfilePic", { method: "POST", body: formData });
+        }
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get("username") || "demo";
+
+    async function loadProfile() {
+        try {
+            const response = await fetch("/profile/" + username);
+            const user = await response.json();
+
+            if (response.status === 200) {
+                document.getElementById("fullName").innerText = user.fullname;
+                document.getElementById("username").innerText = "@" + user.username;
+
+                let vaccineHtml = '';
+                if(user.vaccines && user.vaccines.length) {
+                    user.vaccines.forEach(v => {
+                        let statusClass = v.status.toLowerCase();
+                        vaccineHtml += `
+                            <div class="vaccine-card">
+                                <span class="vaccine-name">${v.vaccineName} (Dose ${v.doseNumber})</span>
+                                <span class="status ${statusClass}">${v.status}</span>
+                            </div>
+                        `;
+                    });
+                }
+
+                document.getElementById("profileData").innerHTML = `
+                    <div class="section-title">Personal Info</div>
+                    <div class="info-row"><b>Email:</b> ${user.email}</div>
+                    <div class="info-row"><b>Phone:</b> ${user.phone}</div>
+                    <div class="info-row"><b>DOB:</b> ${user.dob}</div>
+
+                    <div class="section-title">Vaccines</div>
+                    ${vaccineHtml || '<div>No vaccines recorded.</div>'}
+
+                    <div class="section-title">Child Vaccines</div>
+                    ${user.childVaccines && user.childVaccines.length ? user.childVaccines.map(c => `
+                        <div class="vaccine-card">
+                            <span class="vaccine-name">${c.childName}</span>
+                            <span class="status pending">Child</span>
+                        </div>
+                    `).join('') : '<div>No child vaccines recorded.</div>'}
+
+                    <a href="login.html" class="logout-btn">Logout</a>
+                `;
+            } else {
+                document.getElementById("profileData").innerText = "User not found ❌";
+            }
+        } catch (err) {
+            document.getElementById("profileData").innerText = "Error loading profile ❌";
+            console.error(err);
+        }
+    }
+
+    loadProfile();
+</script>
+
+</body>
+</html>

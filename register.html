@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tika Registration</title>
+</head>
+<body>
+
+<h2>Tika / Vaccine Registration ✅</h2>
+
+<form id="registerForm">
+    <input type="text" id="fullname" placeholder="Full Name" required>
+
+    <input type="email" id="email" placeholder="Email" required>
+
+    <input type="text" id="username" placeholder="Username" required>
+
+    <input type="password" id="password" placeholder="Password" required>
+
+    <input type="text" id="phone" placeholder="Phone Number" required>
+
+    <label>Date of Birth:</label>
+    <input type="date" id="dob" required>
+
+    <label>Select Vaccine:</label>
+    <select id="vaccine" required>
+        <option value="">-- Choose Vaccine --</option>
+        <option value="COVID-19">COVID-19</option>
+        <option value="Hepatitis B">Hepatitis B</option>
+        <option value="Tetanus">Tetanus</option>
+        <option value="Tuberculosis (BCG)">BCG (TB Vaccine)</option>
+        <option value="Measles">Measles</option>
+        <option value="Chickenpox">Chickenpox</option>
+        <option value="Influenza">Influenza (Flu)</option>
+        <option value="Typhoid">Typhoid</option>
+        <option value="HPV">HPV (Cervical Cancer)</option>
+    </select>
+
+    <label>Select Child Vaccine:</label>
+    <select id="childVaccine">
+        <option value="">-- Choose Child Vaccine (Optional) --</option>
+        <option value="Polio">Polio</option>
+        <option value="DTP">DTP (Diphtheria, Tetanus, Pertussis)</option>
+        <option value="MMR">MMR (Measles, Mumps, Rubella)</option>
+        <option value="Rotavirus">Rotavirus</option>
+        <option value="Hib">Hib (Haemophilus Influenzae B)</option>
+        <option value="Pneumococcal">Pneumococcal</option>
+        <option value="Hepatitis A">Hepatitis A</option>
+        <option value="Varicella">Varicella (Chickenpox)</option>
+    </select>
+
+    <button type="submit">Register 🚀</button>
+</form>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const userData = {
+        fullname: document.getElementById("fullname").value,
+        email: document.getElementById("email").value,
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+        phone: document.getElementById("phone").value,
+        dob: document.getElementById("dob").value,
+        vaccine: document.getElementById("vaccine").value,
+        childVaccine: document.getElementById("childVaccine").value
+    };
+
+    try {
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData)
+        });
+
+        const result = await res.json();
+        alert(result.message);
+
+        if (res.status === 201) {
+            window.location.href = "/profile.html?username=" + userData.username;
+        }
+    } catch (err) {
+        alert("Registration Failed ❌");
+    }
+});
+</script>
+
+<style>
+body {
+    font-family: Poppins, sans-serif;
+    background: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+form {
+    background: #fff;
+    padding: 22px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select {
+    padding: 10px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 6px;
+    color: #333;
+}
+
+button {
+    background: #4f46e5;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #4338ca;
+}
+</style>
+
+</body>
+</html>
